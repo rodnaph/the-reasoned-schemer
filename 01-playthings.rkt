@@ -1,6 +1,6 @@
 #lang racket
 
-(require "mk.ss")
+(require "lib/mk.ss")
 
 ; 11
 
