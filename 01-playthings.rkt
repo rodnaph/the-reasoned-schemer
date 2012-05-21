@@ -3,6 +3,9 @@
 (require rackunit)
 (require "lib/mk.ss")
 
+(define S (== #t #t))
+(define U (== #t #f))
+
 (define ans check-equal?)
 
 ; 11
@@ -125,4 +128,32 @@
     (fresh (x)
       (== x q)
       (== #t x))))
+
+; 40
+
+(ans '(#t)
+  (run* (q)
+    (fresh (x)
+      (== #t x)
+      (== x q))))
+
+; 41
+
+(ans #f
+  (cond
+    (#f #t)
+    (else #f)))
+
+; 43
+
+(ans #f
+  (cond
+    (#f #t)
+    (else #f)))
+
+; 44
+
+  (conde
+    (U S)
+    (else U))
 
