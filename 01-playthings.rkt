@@ -1,12 +1,6 @@
 #lang racket
 
-(require rackunit)
-(require "lib/mk.ss")
-
-(define S (== #t #t))
-(define U (== #t #f))
-
-(define ans check-equal?)
+(require "lib/rs.ss")
 
 ; 11
 
@@ -151,9 +145,12 @@
     (#f #t)
     (else #f)))
 
-; 44
+; 47
 
-  (conde
-    (U S)
-    (else U))
+(ans '(olive oil) 
+  (run* (x)
+    (conde
+      ((== 'olive x) S)
+      ((== 'oil x) S)
+      (U))))
 
