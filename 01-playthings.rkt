@@ -151,8 +151,7 @@
   (run* (x)
     (conde
       ((== 'olive x) S)
-      ((== 'oil x) S)
-      (U))))
+      ((== 'oil x) S))))
 
 ; 49
 
@@ -160,8 +159,7 @@
   (run 1 (x)
     (conde
       ((== 'olive x) S)
-      ((== 'oil x) S)
-      (U))))
+      ((== 'oil x) S))))
 
 ; 50
 
@@ -171,8 +169,7 @@
       ((== 'virgin x) U)
       ((== 'olive x) S)
       (S S)
-      ((== 'oil x) S)
-      (U))))
+      ((== 'oil x) S))))
 
 ; 52
 
@@ -200,8 +197,7 @@
     (fresh (x y)
       (conde
         ((== 'split x) (== 'pea y))
-        ((== 'navy x) (== 'bean y))
-        (U))
+        ((== 'navy x) (== 'bean y)))
       (== (cons x (cons y (cons 'soup '()))) r))))
 
 ; 56
@@ -210,10 +206,62 @@
   (lambda (x)
     (conde
       ((== 'tea x) S)
-      ((== 'cup x) S)
-      (U))))
+      ((== 'cup x) S))))
 
 (ans '(tea cup)
   (run* (x)
     (teacupo x)))
+
+; 57
+
+; ???
+;(ans '((tea #t) (cup #t) (#f #t))
+;  (run* (r)
+;    (fresh (x y)
+;      (conde
+;        ((teacupo x) (== #t y) S)
+;        ((== #f x) (== #t y)))
+;      (== (cons x (cons y '())) r))))
+
+; 58
+
+(ans '((_.0 _.1) (_.0 _.1))
+  (run* (r)
+    (fresh (x y z)
+      (conde
+        ((== y x) (fresh (x) (== z x)))
+        ((fresh (x) (== y x)) (== z x)))
+      (== (cons y (cons z '())) r))))
+
+; 59
+
+(ans '((#f _.0) (_.0 #f))
+  (run* (r)
+    (fresh (x y z)
+      (conde
+        ((== y x) (fresh (x) (== z x)))
+        ((fresh (x) (== y x)) (== z x)))
+      (== #f x)
+      (== (cons y (cons z '())) r))))
+
+; 60
+
+(ans '(#f)
+  (run* (q)
+    (let ((a (== #t q))
+          (b (== #f q)))
+     b)))
+
+; 61
+
+(ans '(#f)
+  (run* (q)
+    (let ((a (== #t q))
+          (b (fresh (x)
+              (== x q)
+              (== #f x)))
+          (c (conde
+              ((== #t q) S)
+              ((== #f q)))))
+    b)))
 

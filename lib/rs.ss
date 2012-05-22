@@ -10,5 +10,7 @@
   (define S (== #t #t))
   (define U (== #t #f))
 
-  (define ans check-equal?))
+  (define ans 
+    (lambda (x y)
+      (check-equal? y x))))
 
