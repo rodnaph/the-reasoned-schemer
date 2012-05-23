@@ -170,3 +170,70 @@
       (conso x (list 'a x 'c) l)
       (== (list 'd 'a x 'c) l))))
 
+; 29
+
+(ans '((b e a n s))
+  (run* (l)
+    (fresh (d x y w s)
+      (conso w '(a n s) s)
+      (cdro l s)
+      (caro l x)
+      (== 'b x)
+      (cdro l d)
+      (caro d y)
+      (== 'e y))))
+
+; 30
+
+(ans #f
+  (null? '(grape raisin pear)))
+
+; 31
+
+(ans #t
+  (null? '()))
+
+; 32
+
+(ans '()
+  (run* (q)
+    (nullo '(grape raisin pear))
+    (== #t q)))
+
+; 33
+
+(ans '(#t)
+  (run* (q)
+    (nullo '())
+    (== #t q)))
+
+; 34
+
+(ans '(())
+  (run* (x)
+    (nullo x)))
+
+; 36
+
+(ans #f
+  (eq? 'pear 'plum))
+
+; 37
+
+(ans #t
+  (eq? 'plum 'plum))
+
+; 38
+
+(ans '()
+  (run* (q)
+    (eqo 'pear 'plum)
+    (== #t q)))
+
+; 39
+
+(ans '(#t)
+  (run* (q)
+    (eqo 'plum 'plum)
+    (== #t q)))
+
