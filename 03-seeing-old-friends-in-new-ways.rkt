@@ -30,7 +30,24 @@
 
 ; 10
 
-(ans '()
+(ans '(())
   (run 1 (x)
-    (listo '(a b c . x))))
+    (listo (cons '(a b c) x))))
+
+; 13
+
+; non-terminating
+;(ans '()
+;  (run* (x)
+;    (listo (cons '(a b c) x))))
+
+; 14
+
+(ans '(()
+       (_.0)
+       (_.0 _.1)
+       (_.0 _.1 _.2)
+       (_.0 _.1 _.2 _.3))
+  (run 5 (x)
+    (listo (cons '(a b c) x))))
 
