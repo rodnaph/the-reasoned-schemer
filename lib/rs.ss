@@ -6,7 +6,7 @@
   (provide == conde fresh run run*
            conda condu project
            ;
-           caro cdro conso nullo eqo pairo
+           caro cdro conso nullo eqo pairo listo
            U S ans)
 
   (define S (== #t #t))
@@ -38,6 +38,15 @@
     (lambda (p)
       (fresh (a d)
         (conso a d p))))
+
+  (define listo
+    (lambda (l)
+      (conde
+        ((nullo l) S)
+        ((pairo l)
+         (fresh (d)
+           (cdro l d)
+           (listo d))))))
 
   (define ans 
     (lambda (x y)
