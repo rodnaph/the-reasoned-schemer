@@ -237,3 +237,73 @@
     (eqo 'plum 'plum)
     (== #t q)))
 
+; 43
+
+(ans #t
+  (pair? '((split) . pea)))
+
+; 44
+
+(ans #f
+  (pair? '()))
+
+; 47
+
+(ans #t
+  (pair? '(pear)))
+
+; 48
+
+(ans 'pear
+  (car '(pear)))
+
+; 49
+
+(ans '()
+  (cdr '(pear)))
+
+; 51
+
+(ans '((split) . pea)
+  (cons '(split) 'pea))
+
+; 52
+
+(ans '((_.0 _.1 . salad))
+  (run* (r)
+    (fresh (x y)
+      (== (cons x (cons y 'salad)) r))))
+
+; 54
+
+(ans '(#t)
+  (run* (q)
+    (pairo (cons q q))
+    (== #t q)))
+
+; 55
+
+(ans '()
+  (run* (q)
+    (pairo '())
+    (== #t q)))
+
+; 56
+
+(ans '()
+  (run* (q)
+    (pairo 'pair)
+    (== #t q)))
+
+; 57
+
+(ans '((_.0 . _.1))
+  (run* (x)
+    (pairo x)))
+
+; 58
+
+(ans '(_.0)
+  (run* (r)
+    (pairo (cons r 'pear))))
+

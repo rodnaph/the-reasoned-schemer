@@ -6,7 +6,7 @@
   (provide == conde fresh run run*
            conda condu project
            ;
-           caro cdro conso nullo eqo
+           caro cdro conso nullo eqo pairo
            U S ans)
 
   (define S (== #t #t))
@@ -33,6 +33,11 @@
   (define eqo
     (lambda (x y)
       (== x y)))
+
+  (define pairo
+    (lambda (p)
+      (fresh (a d)
+        (conso a d p))))
 
   (define ans 
     (lambda (x y)
