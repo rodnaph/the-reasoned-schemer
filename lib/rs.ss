@@ -5,8 +5,10 @@
 
   (provide == conde fresh run run*
            conda condu project
-           ;
-           caro cdro conso nullo eqo pairo listo
+           ; 02
+           caro cdro conso nullo eqo pairo 
+           ; 03
+           listo lolo twinso loto
            U S ans)
 
   (define S (== #t #t))
@@ -47,6 +49,30 @@
          (fresh (d)
            (cdro l d)
            (listo d))))))
+
+  (define lolos
+    (lambda (l f)
+      (conde
+        ((nullo l) S)
+        ((fresh (a)
+           (caro l a)
+           (f a))
+         (fresh (d)
+           (cdro l d)
+           (lolos d f))))))
+
+  (define lolo
+    (lambda (l)
+      (lolos l listo)))
+
+  (define twinso
+    (lambda (s)
+      (fresh (x)
+        (== (list x x) s))))
+
+  (define loto
+    (lambda (l)
+      (lolos l twinso)))
 
   (define ans 
     (lambda (x y)
