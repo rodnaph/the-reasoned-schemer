@@ -141,3 +141,15 @@
       (== (list* '(g g) (list 'e w) (list x y) z) out)
       (loto out))))
 
+; 53
+
+(ans #t
+  (member? 'olive '(virgin olive oil)))
+
+; 57
+
+(ans '(#t)
+  (run* (q)
+    (membero 'a '(b a))
+    (== #t q)))
+

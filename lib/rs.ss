@@ -8,7 +8,7 @@
            ; 02
            caro cdro conso nullo eqo pairo 
            ; 03
-           listo lolo twinso loto
+           listo lolo twinso loto member? eq-car? membero eq-caro
            U S ans)
 
   (define S (== #t #t))
@@ -73,6 +73,30 @@
   (define loto
     (lambda (l)
       (listof twinso l)))
+
+  (define eq-car?
+    (lambda (l x)
+      (eq? (car l) x)))
+
+  (define member?
+    (lambda (x l)
+      (cond
+        ((null? l) #f)
+        ((eq-car? l x) #t)
+        (else (member? x (cdr l))))))
+
+  (define eq-caro
+    (lambda (l x)
+      (caro l x)))
+
+  (define membero
+    (lambda (x l)
+      (conde
+        ((nullo l) U)
+        ((eq-caro l x) S)
+        ((fresh (d)
+          (cdro l d)
+          (membero x d))))))
 
   (define ans 
     (lambda (x y)
