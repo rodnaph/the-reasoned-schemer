@@ -119,11 +119,25 @@
   (run 5 (z)
     (loto (cons '(g g) z))))
 
-; 44
+; 45
 
-(ans '((e (_.0 _.0) (_.1 _.1)))
+(ans '((e (_.0 _.0) ())
+       (e (_.0 _.0) ((_.1 _.1)))
+       (e (_.0 _.0) ((_.1 _.1) (_.2 _.2)))
+       (e (_.0 _.0) ((_.1 _.1) (_.2 _.2) (_.3 _.3)))
+       (e (_.0 _.0) ((_.1 _.1) (_.2 _.2) (_.3 _.3) (_.4 _.4))))
   (run 5 (r)
-    (fresh ( w x y z)
-      (loto (list '(g g) (list 'e w) (list x y) z))
+    (fresh (w x y z)
+      (loto (list* '(g g) (list 'e w) (list x y) z))
       (== (list w (list x y) z) r))))
+
+; 47
+
+(ans '(((g g) (e e) (_.0 _.0))
+       ((g g) (e e) (_.0 _.0) (_.1 _.1))
+       ((g g) (e e) (_.0 _.0) (_.1 _.1) (_.2 _.2)))
+  (run 3 (out)
+    (fresh (w x y z)
+      (== (list* '(g g) (list 'e w) (list x y) z) out)
+      (loto out))))
 

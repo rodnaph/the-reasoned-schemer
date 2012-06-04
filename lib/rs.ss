@@ -50,8 +50,8 @@
            (cdro l d)
            (listo d))))))
 
-  (define lolos
-    (lambda (l f)
+  (define listof
+    (lambda (f l)
       (conde
         ((nullo l) S)
         ((fresh (a)
@@ -59,11 +59,11 @@
            (f a))
          (fresh (d)
            (cdro l d)
-           (lolos d f))))))
+           (listof f d))))))
 
   (define lolo
     (lambda (l)
-      (lolos l listo)))
+      (listof listo l)))
 
   (define twinso
     (lambda (s)
@@ -72,7 +72,7 @@
 
   (define loto
     (lambda (l)
-      (lolos l twinso)))
+      (listof twinso l)))
 
   (define ans 
     (lambda (x y)
