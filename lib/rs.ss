@@ -8,7 +8,8 @@
            ; 02
            caro cdro conso nullo eqo pairo 
            ; 03
-           listo lolo twinso loto member? eq-car? membero eq-caro
+           listo lolo twinso loto member? eq-car? membero eq-caro identity
+           pmembero
            U S ans)
 
   (define S (== #t #t))
@@ -97,6 +98,20 @@
         ((fresh (d)
           (cdro l d)
           (membero x d))))))
+
+  (define identity
+    (lambda (x)
+      (run* (y)
+        (membero y x))))
+
+  (define pmembero
+    (lambda (x l)
+      (conde
+        ((nullo l) U)
+        ((eq-caro l x) (cdro l '()))
+        ((fresh (d)
+           (cdro l d)
+           (pmembero x d))))))
 
   (define ans 
     (lambda (x y)
