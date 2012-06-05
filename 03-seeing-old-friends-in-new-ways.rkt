@@ -254,3 +254,21 @@
     (pmembero 'tofu '(a b tofu d tofu))
     (== #t q)))
 
+; 95
+
+(ans '(pasta)
+  (first-value '(pasta e fagioli)))
+
+; 100
+
+; @todo - reverse not working
+;
+;(ans '(fagioli e pasta)
+;  (run* (x)
+;    (memberrevo x '(pasta e fagioli))))
+;
+;; 101
+;
+;(ans '(c b a)
+;  (reverse-list '(a b c)))
+

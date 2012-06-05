@@ -3,14 +3,13 @@
   (require rackunit)
   (require "mk.ss")
 
-  (provide == conde fresh run run*
-           conda condu project
+  (provide == conde fresh run run* conda condu project U S ans
            ; 02
            caro cdro conso nullo eqo pairo 
            ; 03
            listo lolo twinso loto member? eq-car? membero eq-caro identity
-           pmembero
-           U S ans)
+           pmembero first-value memberrevo reverse-list
+  )
 
   (define S (== #t #t))
   (define U (== #t #f))
@@ -112,6 +111,25 @@
         ((fresh (d)
            (cdro l d)
            (pmembero x d))))))
+
+  (define first-value
+    (lambda (l)
+      (run 1 (y)
+        (membero y l))))
+
+  (define memberrevo
+    (lambda (x l)
+      (conde
+        ((nullo l) U)
+        (S (fresh (d)
+           (cdro l d)
+           (memberrevo x d)))
+        ((eq-caro l x)))))
+
+  (define reverse-list
+    (lambda (l)
+      (run* (x)
+        (memberrevo x l))))
 
   (define ans 
     (lambda (x y)
