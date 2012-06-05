@@ -90,3 +90,71 @@
     (fresh (u)
       (memo 'tofu (list* 'a 'b 'tofu 'd 'tofu 'e z) u))))
 
+; 23
+
+(ans '(a b d peas e)
+  (rember 'peas '(a b peas d peas e)))
+
+; 30
+
+(ans '((a b d peas e))
+  (run 1 (out)
+    (fresh (y)
+      (rembero 'peas (list 'a 'b y 'd 'peas 'e) out))))
+
+; 31
+
+(ans '((b a d _.0 e)
+       (a b d _.0 e)
+       (a b d _.0 e)
+       (a b d _.0 e)
+       (a b _.0 d e)
+       (a b e d _.0)
+       (a b _.0 d _.1 e))
+  (run* (out)
+    (fresh (y z)
+      (rembero y (list 'a 'b y 'd z 'e) out))))
+
+; 49
+
+(ans '((d d)
+       (d d)
+       (_.0 _.0)
+       (e e))
+  (run* (r)
+    (fresh (y z)
+      (rembero y (list y 'd z 'e) (list y 'd 'e))
+      (== (list y z) r))))
+
+; 57
+
+(ans '(_.0
+       _.0
+       _.0
+       _.0
+       _.0
+       ()
+       (_.0 . _.1)
+       (_.0)
+       (_.0 _.1 . _.2)
+       (_.0 _.1)
+       (_.0 _.1 _.2 . _.3)
+       (_.0 _.1 _.2)
+       (_.0 _.1 _.2 _.3 . _.4))
+  (run 13 (w)
+    (fresh (y z out)
+      (rembero y (list* 'a 'b y 'd z w) out))))
+
+; 69
+
+(ans '(d)
+  (run* (r)
+    (== 'd r)
+    (surpriso r)))
+
+; 70
+
+(ans '(_.0)
+  (run* (r)
+    (surpriso r)))
+

@@ -10,12 +10,16 @@
            listo lolo twinso loto member? eq-car? membero eq-caro identity
            pmembero first-value memberrevo reverse-list
            ; 04
-           mem memo
+           mem memo rember rembero surpriso
   )
 
   (define S (== #t #t))
   (define U (== #t #f))
 
+  (define ans 
+    (lambda (x y)
+      (check-equal? y x)))
+    
   (define caro
     (lambda (p a)
       (fresh (d)
@@ -148,7 +152,28 @@
            (cdro l d)
            (memo x d out))))))
 
-  (define ans 
-    (lambda (x y)
-      (check-equal? y x))))
+  (define rember
+    (lambda (x l)
+      (cond
+        ((null? l) '())
+        ((eq-car? l x) (cdr l))
+        (else
+          (cons (car l)
+            (rember x (cdr l)))))))
+
+  (define rembero
+    (lambda (x l out)
+      (conde
+        ((nullo l) (== '() out))
+        ((eq-caro l x) (cdro l out))
+        ((fresh (a d res)
+           (conso a d l)
+           (rembero x d res)
+           (conso a res out))))))
+
+  (define surpriso
+    (lambda (s)
+      (rembero s '(a b c) '(a b c))))
+
+)
 
