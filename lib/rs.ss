@@ -10,7 +10,7 @@
            listo lolo twinso loto member? eq-car? membero eq-caro identity
            pmembero first-value memberrevo reverse-list
            ; 04
-           mem
+           mem memo
   )
 
   (define S (== #t #t))
@@ -139,6 +139,14 @@
         ((null? l) #f)
         ((eq-car? l x) l)
         (else (mem x (cdr l))))))
+
+  (define memo
+    (lambda (x l out)
+      (conde
+        ((eq-caro l x) (== l out))
+        ((fresh (d)
+           (cdro l d)
+           (memo x d out))))))
 
   (define ans 
     (lambda (x y)
